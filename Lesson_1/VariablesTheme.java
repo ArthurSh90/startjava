@@ -50,13 +50,13 @@ public class VariablesTheme {
         int maxInt = Integer.MAX_VALUE;
         long maxLong = Long.MAX_VALUE;
         System.out.println("byte\nПервоначальное значение - " + maxByte + "\nЗначение после инкремента - "
-                + (maxByte++) + "\nЗначение после декремента - " + (--maxByte) +
+                + ++maxByte + "\nЗначение после декремента - " + --maxByte +
                 "\nshort\nПервоначальное значение - " + maxShort + "\nЗначение после инкремента - "
-                + (maxShort++) + "\nЗначение после декремента - " + (--maxShort) + 
+                + ++maxShort + "\nЗначение после декремента - " + --maxShort + 
                 "\nint\nПервоначальное значение - " + maxInt + "\nЗначение после инкремента - "
-                + (maxInt++) + "\nЗначение после декремента - " + (--maxInt) + 
+                + ++maxInt + "\nЗначение после декремента - " + --maxInt + 
                 "\nlong\nПервоначальное значение - " + maxLong + "\nЗначение после инкремента - "
-                + (maxLong++) + "\nЗначение после декремента - " + (--maxLong));
+                + ++maxLong + "\nЗначение после декремента - " + --maxLong);
 
         System.out.println("\nЗадача №5. Перестановка значений переменных.\n");
         double num1 = 1.1d;
@@ -76,9 +76,18 @@ public class VariablesTheme {
         System.out.println("Новые значения переменных: num1 = " + num1 + ", num2 = " + num2 +
                 "\nПерестановка значений переменных с помощью побитовой операции.\n" +
                 "Исходные значения переменных: num1 = " + num1 + ", num2 = " + num2);
-        num1 = Math.round(num1) ^ Math.round(num2);
-        num2 = Math.round(num1) ^ Math.round(num2);
-        num1 = Math.round(num1) ^ Math.round(num2);
+        int intNum1 = (int) num1;
+        double fractNum1 = num1 - intNum1;
+        int intNum2 = (int) num2;
+        double fractNum2 = num2 - intNum2;
+        intNum1 = intNum1 ^ intNum2;
+        intNum2 = intNum1 ^ intNum2;
+        intNum1 = intNum1 ^ intNum2;
+        tmp = fractNum1;
+        fractNum1 = fractNum2;
+        fractNum2 = tmp;
+        num1 = intNum1 +fractNum1;
+        num2 = intNum2 +fractNum2;
         System.out.println("Новые значения переменных: num1 = " + num1 + ", num2 = " + num2);
 
         System.out.println("\nЗадача №6. Вывод символов и их кодов.\n");
@@ -117,13 +126,14 @@ public class VariablesTheme {
 
         System.out.println("\nЗадача №9. Отображение количества сотен, десятков и единиц числа.\n");
         int srcNum = 123;
-        int hundredsNum = srcNum / 100;
-        int tensNum = (srcNum % 100) / 10;
-        int onesNum = srcNum % 10;
+        int hundreds = srcNum / 100;
+        int tens = (srcNum % 100) / 10;
+        int ones = srcNum % 10;
         System.out.println("Число " + srcNum + " содержит: \n" +
-                hundredsNum + " сотню\n" +
-                tensNum + " десятка\n" + 
-                onesNum + " единицы");
+                hundreds + " сотню\n" +
+                tens + " десятка\n" + 
+                ones + " единицы");
+
         System.out.println("\nЗадача №10. Преобразование секунд.\n");
         int scrSec = 86399;
         int hour = scrSec / 3600;
