@@ -7,8 +7,7 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Доступ Запрещен!");
         }
-        char male = 'f';
-        boolean isMaleGender = male == 'm';
+        boolean isMaleGender = false;
         if (!isMaleGender) System.out.println("Вы женщина");
         double manHeight = 1.75d;
         if (manHeight < 1.80) {
@@ -16,8 +15,7 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Вы выше 180 см");
         }
-        String name = "Mark";
-        char firstLetterName = name.charAt(0);
+        char firstLetterName = "Mark".charAt(0);
         if (firstLetterName == 'M') {
             System.out.println("Первая буква вашего имени - " + firstLetterName);
         } else if (firstLetterName == 'I') {
@@ -57,40 +55,49 @@ public class IfElseStatementTheme {
         int aNumN = numN / 100;
         int bNumN = (numN % 100) / 10;
         int cNumN = numN % 10;
-        int numM = 133;
+        int numM = 141;
         int aNumM = numM / 100;
         int bNumM = (numM % 100) / 10;
         int cNumM = numM % 10;
-        if (aNumN == aNumM && bNumN == bNumM && cNumN == cNumM) {
-            System.out.println("В числах " + numN + " и " + numM + " цифры: " + aNumN + ", " + bNumN + ", " + cNumN +
-                    " состоят в 1, 2, 3 разрядах.");
-        } else if (aNumN == aNumM && bNumN == bNumM) {
-            System.out.println("В числах " + numN + " и " + numM + " цифры: " + aNumN + ", " + bNumN +
-                    " состоят в 1, 2 разрядах.");
-        } else if (bNumN == bNumM && cNumN == cNumM) {
-            System.out.println("В числах " + numN + " и " + numM + " цифры: " + bNumN + ", " + cNumN +
-                    " состоят во 2 и 3 разрядах.");
-        } else if (aNumN == aNumM && cNumN == cNumM) {
-            System.out.println("В числах " + numN + " и " + numM + " цифры: " + aNumN + ", " + cNumN +
-                    " состоят в 1 и 3 разрядах.");
-        } else if (aNumN == aNumM) {
-            System.out.println("В числах " + numN + " и " + numM + " цифра: " + aNumN +
-                    " состоят в 1 разряде.");
-        } else if (bNumN == bNumM) {
-            System.out.println("В числах " + numN + " и " + numM + " цифра: " + bNumN +
-                    " состоят во 2 разряде.");
-        } else if (cNumN == cNumM) {
-            System.out.println("В числах " + numN + " и " + numM + " цифра: " + cNumN +
-                    " состоят в 3 разряде.");
+        String flagOnes = "";
+        String flagDigit = "";
+        if (aNumN == aNumM) {
+            flagOnes += aNumM;
+            flagDigit += "1";
+        }
+        if (bNumN == bNumM) {
+            if (aNumN == aNumM) {
+                flagOnes += ", ";
+                flagDigit += ", ";
+            }
+            flagOnes += bNumM;
+            flagDigit += "2";
+        }
+        if (cNumN == cNumM) {
+            if (bNumN == bNumM) {
+                flagOnes += ", ";
+                flagDigit += ", ";
+            } else if (aNumN == aNumM) {
+                flagOnes += ", ";
+                flagDigit += ", ";
+            }
+            flagOnes += cNumM;
+            flagDigit += "3";
+        }
+        if (flagOnes != "" && flagDigit != "") {
+            System.out.println("В числах: " + numN + " и " + numM + " одинаковые цифры - " + flagOnes +
+                    " состоят в - " + flagDigit + " разрядах.");
         } else {
-            System.out.println("Нет совпадений");
+            System.out.println("В числах: " + numN + " и " + numM + " нет одинаковых цифр");
         }
 
         System.out.println("\nЗадача №5. Определение буквы, числа или символа по их коду\n");
-        char charW = '\u0057';
-        if (charW >= '\u0041' && charW <= '\u005A' || charW >= '\u0061' && charW <= '\u007A') {
-            System.out.println("Маленькая (большая) буква");
-        } else if (charW >= '\u0030' && charW <= '\u0039') {
+        char unknownChar = '\u0057';
+        if (unknownChar >= 'A' && unknownChar <= 'Z') {
+            System.out.println("Большая буква");
+        } else if (unknownChar >= 'a' && unknownChar <= 'z') {
+            System.out.println("Маленькая буква");
+        } else if (unknownChar >= '0' && unknownChar <= '9') {
             System.out.println("Это число");
         } else {
             System.out.println("Не буква и не число");
@@ -98,19 +105,16 @@ public class IfElseStatementTheme {
 
         System.out.println("\nЗадача №6. Определение суммы вклада и начисленных банком %\n");
         int depositAmount = 300000;
+        double percentAccrued = 0;
         if (depositAmount < 100000) {
-            double percentAccrued = depositAmount * 0.05;
-            System.out.println("Сумма вклада = " + depositAmount + ", начисленный процент = " +
-                 percentAccrued + ", итоговая сумма = " + (depositAmount + percentAccrued));
+            percentAccrued = depositAmount * 0.05;
         } else if (depositAmount >= 100000 && depositAmount < 300000) {
-            double percentAccrued = depositAmount * 0.07;
-            System.out.println("Сумма вклада = " + depositAmount + ", начисленный процент = " +
-                 percentAccrued + ", итоговая сумма = " + (depositAmount + percentAccrued));
+            percentAccrued = depositAmount * 0.07;
         } else if (depositAmount >= 300000) {
-            double percentAccrued = depositAmount * 0.1;
-            System.out.println("Сумма вклада = " + depositAmount + ", начисленный процент = " +
-                 percentAccrued + ", итоговая сумма = " + (depositAmount + percentAccrued));
+            percentAccrued = depositAmount * 0.1;
         }
+        System.out.println("Сумма вклада = " + depositAmount + ", начисленный процент = " +
+                percentAccrued + ", итоговая сумма = " + (depositAmount + percentAccrued));
 
         System.out.println("\nЗадача №7. Определение оценки по предметам\n");
         int historyGrade = 59;
