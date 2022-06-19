@@ -51,44 +51,31 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\nЗадача №4. Поиск одинаковых цифр в числах\n");
-        int numN = 443;
-        int aNumN = numN / 100;
-        int bNumN = (numN % 100) / 10;
-        int cNumN = numN % 10;
-        int numM = 141;
-        int aNumM = numM / 100;
-        int bNumM = (numM % 100) / 10;
-        int cNumM = numM % 10;
-        String flagOnes = "";
-        String flagDigit = "";
-        if (aNumN == aNumM) {
-            flagOnes += aNumM;
-            flagDigit += "1";
+        num1 = 222;
+        int aNum1 = num1 / 100;
+        int bNum1 = (num1 % 100) / 10;
+        int cNum1 = num1 % 10;
+        num2 = 212;
+        int aNum2 = num2 / 100;
+        int bNum2 = (num2 % 100) / 10;
+        int cNum2 = num2 % 10;
+        int flag = -1;
+        
+        System.out.print("В числах " + num1 + " и " + num2 + " одинаковые цифры");
+        if (aNum1 == aNum2) {
+            flag = 0;
+            System.out.print("\n\t " + aNum1 + " стоят в сотнях");
         }
-        if (bNumN == bNumM) {
-            if (aNumN == aNumM) {
-                flagOnes += ", ";
-                flagDigit += ", ";
-            }
-            flagOnes += bNumM;
-            flagDigit += "2";
+        if (bNum1 == bNum2) {
+            flag = 0;
+            System.out.print("\n\t " + bNum1 + " стоят в десятках");
         }
-        if (cNumN == cNumM) {
-            if (bNumN == bNumM) {
-                flagOnes += ", ";
-                flagDigit += ", ";
-            } else if (aNumN == aNumM) {
-                flagOnes += ", ";
-                flagDigit += ", ";
-            }
-            flagOnes += cNumM;
-            flagDigit += "3";
+        if (cNum1 == cNum2) {
+            flag = 0;
+            System.out.print("\n\t " + cNum1 + " стоят в единицах");
         }
-        if (flagOnes != "" && flagDigit != "") {
-            System.out.println("В числах: " + numN + " и " + numM + " одинаковые цифры - " + flagOnes +
-                    " состоят в - " + flagDigit + " разрядах.");
-        } else {
-            System.out.println("В числах: " + numN + " и " + numM + " нет одинаковых цифр");
+        if (flag == -1) {
+            System.out.println(" отсутствуют");
         }
 
         System.out.println("\nЗадача №5. Определение буквы, числа или символа по их коду\n");
