@@ -46,7 +46,7 @@ class CyclesTheme {
             int digit = srcNum % 10;
             sumDigits += digit;
             reverseNum = reverseNum * 10 + digit;
-            srcNum = srcNum / 10;
+            srcNum /= 10;
         }
         System.out.println("Исходное число в обратном порядке - " + reverseNum + ". Сумма его цифр - " +
                 sumDigits);
@@ -62,28 +62,23 @@ class CyclesTheme {
             }
         }
         for (i = stringLenght; i > 0; i--) {
-            System.out.format("%3d", i - i);
+            System.out.format("%3d", 0);
         }
 
         System.out.print("\n\nЗадача №5. Проверка количества единиц на четность\n\n");
         srcNum = 3141591;
-        int numberUnits = 0;
-        System.out.print("Число " + srcNum + " содержит ");
+        int numOnes = 0;
+        boolean isEven = false;
+        System.out.print("Число - " + srcNum + " содержит - ");
         while (srcNum != 0) {
             int digit = srcNum % 10;
             if (digit == 1) {
-                numberUnits += digit;
+                numOnes++;
+                isEven = numOnes % 2 == 0;
             }
-            srcNum = srcNum / 10;
-            if (srcNum == 0) {
-                if (numberUnits % 2 != 0) {
-                    System.out.print(numberUnits + " не четное");
-                } else {
-                    System.out.print(numberUnits + " четное");
-                }
-            }
+            srcNum /= 10;
         }
-        System.out.println(" количество единиц.");
+        System.out.println(numOnes + "" + (isEven ? " (четное)" : " (нечетное)") + " единицы.");
         
         System.out.print("\nЗадача №6. Отображение фигур в консоли\n\n");
         for (i = 0; i < 5; i++) {
@@ -130,12 +125,10 @@ class CyclesTheme {
         System.out.println("DEC CHAR");
         for (i = 0; i < 127; i++) {
             if (i >= 1 && i <= 47 && i % 2 != 0) {
-                System.out.format("%3d", i);
-                System.out.format("%5c%n", i);
+                System.out.format("%3d%5c%n", i, i);
             }
             if (i >= 97 && i <= 122 && i % 2 == 0) {
-                System.out.format("%3d", i);
-                System.out.format("%5c%n", i);
+                System.out.format("%3d%5c%n", i, i);
             }
         }
 
@@ -147,7 +140,7 @@ class CyclesTheme {
         while (num != 0) {
             int digit = num % 10;
             reverseNum = reverseNum * 10 + digit;
-            num = num / 10;
+            num /= 10;
         }
         if (srcNum == reverseNum) {
             System.out.println(" является палиндромом.");
@@ -156,39 +149,31 @@ class CyclesTheme {
         }
 
         System.out.print("\nЗадача №9. Определение, является ли число счастливым\n\n");
-        srcNum = 333441;
-        int leftSum = 0;
-        int rightSum = 0;
-        for (i = 0; i < 2; i++) {
-            int abc = 0;
-            int sum = 0;
-            if (i == 0) {
-                abc = srcNum / 1000;
+            num = 333442;
+            srcNum = num;
+            int leftSum = 0;
+            int rightSum = 0;
+            i = 6;
+            while (num != 0) {
+                int digit = num % 10;
+                if (i > 3) {
+                    rightSum += digit;
+                }
+                if (i <= 3) {
+                    leftSum += digit;
+                }
+                num /= 10;
+                i--;
             }
-            if (i == 1) {
-                abc = srcNum % 1000;
+            System.out.print("Сумма цифр " + srcNum / 1000 + " = " + leftSum + ", сумма цифр " +
+                    srcNum % 1000 + " = " + rightSum);
+            if (rightSum == leftSum) {
+                System.out.print(". Число счастливое.");
+            } else {
+                System.out.print(". Число не счастливое.");
             }
-            System.out.print("Сумма цифр " + abc + " = ");
-            while (abc != 0) {
-                int digit = abc % 10;
-                sum += digit;
-                abc = abc / 10;
-            }
-            if (i == 0) {
-                leftSum = sum;
-            }
-            if (i == 1) {
-                rightSum = sum;
-            }
-            System.out.print(sum + ". ");
-        }
-        if (leftSum == rightSum) {
-            System.out.println("Число счастливое.");
-        } else {
-            System.out.println("Число не счастливое.");
-        }
 
-        System.out.print("\nЗадача №10. Вывод таблицы умножения Пифагора\n\n");
+        System.out.print("\n\nЗадача №10. Вывод таблицы умножения Пифагора\n\n");
         for (i = 1; i < 10; i++) {
             if (i == 1) {
                 System.out.print("   |");
