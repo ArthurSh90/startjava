@@ -147,22 +147,20 @@ class CyclesTheme {
         }
 
         System.out.print("\nЗадача №9. Определение, является ли число счастливым\n\n");
-        srcNum = 333442;
-        int leftNum = srcNum / 1000;
-        int rightNum = srcNum % 1000;
-        int leftSum = 0;
-        int rightSum = 0;
-        while (srcNum != 0) {
-            int digit = (srcNum / 1000) % 10;
-            leftSum += digit;
-            srcNum -= digit * 1000;
-            digit = srcNum % 10;
-            rightSum += digit;
-            srcNum /= 10;
-        }
-        System.out.print("Сумма цифр слева - " + leftNum + " = " + leftSum + ". Сумма цифр справа - " +
-                rightNum + " = " + rightSum);
-        System.out.print(leftSum == rightSum ? ". Число счастливое." : ". Число не счастливое.");
+            srcNum = 313424;
+            System.out.print("Сумма цифр справа - " +  srcNum % 1000);
+            int leftSum = 0;
+            int rightSum = 0;
+            i = 0;
+            while (i < 3) {
+                leftSum += (srcNum / 1000) % 10;
+                rightSum += (srcNum % 1000) % 10;
+                srcNum /= 10;
+                i++;
+            }
+            System.out.print(" = " + rightSum);
+            System.out.print(". Сумма цифр слева - " + srcNum + " = " + leftSum);
+            System.out.print(leftSum == rightSum ? ". Число счастливое." : ". Число не счастливое.");
 
         System.out.print("\n\nЗадача №10. Вывод таблицы умножения Пифагора\n\n");
         for (i = 1; i < 10; i++) {
