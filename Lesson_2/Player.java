@@ -1,8 +1,8 @@
 class Player {
     private String name;
 
-    public Player(String playerName) {
-        this.name = playerName;
+    public Player(String name) {
+        this.name = name;
     }
 
     public String getName() {
