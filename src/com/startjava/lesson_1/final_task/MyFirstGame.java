@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.final_task;
+
 class MyFirstGame {
     public static void main(String[] args) {
         int playerNum = 76;
